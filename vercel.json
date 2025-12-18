@@ -1,21 +1,17 @@
 {
   "version": 2,
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "cleanUrls": true,
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": { "distDir": "dist/public" }
-    },
-    {
-      "src": "server/index.ts",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "server/index.ts"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
